@@ -1,10 +1,3 @@
----
-  language_info:
-    name: python
-  nbformat: 4
-  nbformat_minor: 2
----
-
 # p1.tcl 
 
 ## A1. Implement three nodes point--to--point networks with duplex links between them using NS2. Set the queue size, vary the bandwidth, and find the number of packets dropped.
