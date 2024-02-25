@@ -802,4 +802,3 @@ print("Destination IP:", destination_ip)
 print("Raw Bytes (IPv4 header):", ipv4_header.hex())
 print("Raw Bytes (TCP header):", tcp_header.hex())
 ```
-:::
