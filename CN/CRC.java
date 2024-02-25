@@ -3,9 +3,7 @@ import java.io.*;
 public class CRC{
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-
-
-        System.out.println("enter message bits:");
+        System.out.println("Enter message bits:");
         String message =sc.nextLine();
         System.out.println("Enter generator");
         String generator =sc.nextLine();
