@@ -2,7 +2,7 @@
 
 ## A1. Implement three nodes point--to--point networks with duplex links between them using NS2. Set the queue size, vary the bandwidth, and find the number of packets dropped.
 
-``` python
+``` tcl
 set ns [new Simulator]
 set nf [open p1.nam w]
 $ns namtrace-all $nf
@@ -45,7 +45,8 @@ $ns at 1.0 "finish"
 $ns run
 ```
 # p1.awk 
-``` python
+
+``` awk
 BEGIN{c=0;
 
        r=0;
@@ -68,7 +69,7 @@ END{ printf("The number of packets dropped=%d\n",c);
 
 ## Implement transmission of ping messages/traceroute over a network topology consisting of 6 nodes using NS2 and find the number of packets dropped due to congestion.
 
-``` python
+``` tcl
 set ns [new Simulator]
 set nf [open lab2.nam w]
 $ns namtrace-all $nf
@@ -176,7 +177,7 @@ $ns at 3.0 "finish"
 $ns run
 ```
 # p2.awk
-``` python
+``` awk
 BEGIN{
 	count=0;
 }
@@ -193,7 +194,7 @@ END{ printf("The number of packets dropped =%d\n",count);
 
 ## Implement simple ESS and with transmitting nodes in wire-less LAN by simulation using NS2 and determine the performance with respect to the transmission of packets. 
 
-``` python
+``` tcl
 set ns [new Simulator]
 
 set tf [open Program4.tr w]
@@ -284,7 +285,7 @@ $ns at 250 "finish"
 $ns  run
 ```
 # p4.awk 
-``` python
+``` awk
 BEGIN{
 pack1=0
 pack2=0
@@ -309,7 +310,7 @@ printf("The Throught from n1 to n2: %f Mbps\n",((pack2*8)/(time2*1000000)));
 
 ## Write a program for error detecting code using CRC-CCITT (16- bits). 
 
-``` python
+``` java
 import java.util.Scanner;
 
 public class CRCb {
@@ -373,7 +374,7 @@ public class CRCb {
 # p6.java 
 
 ## Write a program to find the shortest path between vertices using the bellman-ford algorithm
-``` python
+``` java
 import java.util.Scanner;
 
 public class BellmanFord
@@ -466,7 +467,7 @@ public class BellmanFord
 # p7.java
 
 ## Write a program for congestion control using a leaky bucket algorithm.
-``` python
+``` java
 import java.util.Scanner;
 public class lab7
 {
@@ -521,7 +522,7 @@ public class lab7
 
 ## Using TCP/IP sockets, write a client-server program to make client sending the file name and the server to send back the contents of the requested file if present.
 
-``` python
+``` java
 import java.io.*;
 import java.net.*;
 public class FileClient
@@ -551,7 +552,7 @@ public class FileClient
 }
 ```
 # p8b FileServer.java 
-``` python
+``` java
 import java.io.*;
 import java.net.*;
 public class FileServer
@@ -612,7 +613,7 @@ public class FileServer
 # part c1.tcl
 
 ## Implement an Ethernet LAN using n nodes and set multiple traffic nodes using NS2 and plot conges the window for different source/destination.
-``` python
+``` tcl
 set ns [new Simulator]
 set tf [open lab3.tr w]
 $ns trace-all $tf
@@ -694,7 +695,7 @@ $ns at 16 "finish"
 $ns run
 ```
 # part c1.awk 
-``` python
+``` awk
 BEGIN {
 }{
 if($6=="cwnd_")
