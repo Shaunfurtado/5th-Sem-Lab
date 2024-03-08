@@ -305,14 +305,13 @@ def kernel(point, xmat, k):
     m, n = np.shape(xmat)
     weights = np.mat(np.eye((m)))
     for j in range(m):
-        diff = point - X[j]
+        diff = point - xmat[j]
         weights[j,j] = np.exp(diff*diff.T/(-2.0*k**2))
     return weights
 
- 
 def localWeight(point, xmat, ymat, k):
     wei = kernel(point, xmat, k)
-    W = (X.T*(wei*X)).I*(X.T*(wei*ymat.T))
+    W = (xmat.T*(wei*xmat)).I*(xmat.T*(wei*ymat.T))
     return W
 
 def localWeightRegression(xmat, ymat, k):
@@ -322,7 +321,7 @@ def localWeightRegression(xmat, ymat, k):
         ypred[i] = xmat[i] * localWeight(xmat[i], xmat,ymat, k)
     return ypred
 
-def graphPlot(X, ypred):
+def graphPlot(X, ypred,bill,tip):
     sortindex = X[:,1].argsort(0)
     xsort = X[sortindex][:,0]
     fig = plt.figure()
@@ -344,7 +343,7 @@ one = np.mat(np.ones(m))
 X = np.hstack((one.T, mbill.T))
 
 ypred = localWeightRegression(X, mtip, 5)
-graphPlot(X, ypred)
+graphPlot(X, ypred, bill,tip)
 ```
 # 6.Naïve Bayesian classifier
 ``` python
@@ -557,32 +556,33 @@ print("Predicted Output: \n" ,output)
 ```
 # 9.EM Algorithm
 ``` python
-import numpy as np 
-import pandas as pd 
-from matplotlib import pyplot as plt 
-from sklearn.mixture import GaussianMixture 
-from sklearn.cluster import KMeans 
-data = pd.read_csv('data/ex.csv') 
-f1 = data['V1'].values 
-f2 = data['V2'].values 
-X = np.array(list(zip(f1, f2))) 
-print("x: ", X) 
-print('Graph for whole dataset') 
-plt.scatter(f1, f2, c='black') 
-plt.show() 
-kmeans = KMeans(2) 
-labels = kmeans.fit(X).predict(X) 
-print("labels for kmeans:", labels) 
-print('Graph using Kmeans Algorithm') 
-plt.scatter(f1, f2, c=labels) 
-centroids = kmeans.cluster_centers_ 
-print("centroids:", centroids) 
-plt.scatter(centroids[:, 0], centroids[:, 1], marker='*', c='red') 
-plt.show() 
-gmm = GaussianMixture(2) 
-labels = gmm.fit(X).predict(X) 
-print("Labels for GMM: ", labels) 
-print('Graph using EM Algorithm') 
-plt.scatter(f1, f2, c=labels) 
+import numpy as np
+import pandas as pd
+from matplotlib import pyplot as plt
+from sklearn.mixture import GaussianMixture
+from sklearn.cluster import KMeans
+
+data=pd.read_csv('ex.csv')
+f1=data['V1'].values
+f2=data['V2'].values
+X=np.array(list(zip(f1,f2)))
+print("x:",X)
+print("graph for whole dataset")
+plt.scatter(f1,f2,c='black')
+plt.show()
+kmeans=KMeans(2)
+labels=kmeans.fit(X).predict(X)
+print("labels for kmeans:",labels)
+print("graph using KMeans Algorithm")
+plt.scatter(f1,f2,c=labels)
+centroids=kmeans.cluster_centers_
+print("centroids:",centroids)
+plt.scatter(centroids[:,0],centroids[:,1],marker='*',c='red')
+plt.show()
+gmm=GaussianMixture(2)
+labels=gmm.fit(X).predict(X)
+print("labels for GMM:",labels)
+print("Graph using EM Algorithm")
+plt.scatter(f1,f2,c=labels)
 plt.show()
 ```
